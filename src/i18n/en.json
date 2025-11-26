@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "title": "Theme Hub",
+    "website": "Website",
+    "quickActions": "Quick Actions",
+    "darkMode": "Dark Mode",
+    "customTheme": "Custom Theme",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "themeManager": "Theme Manager",
+    "newTheme": "New Theme",
+    "keyboardShortcuts": "Press Alt+T to open • Alt+D for dark mode • Alt+S for themes"
+  },
+  "themes": {
+    "createTheme": "Create Theme",
+    "themeName": "Theme Name",
+    "cssStyles": "CSS Styles",
+    "javascriptCode": "JavaScript Code (Optional)",
+    "test": "Test",
+    "saveTheme": "Save Theme",
+    "import": "Import",
+    "export": "Export",
+    "noThemes": "No custom themes for this website yet.",
+    "clickToCreate": "Click \"New Theme\" to create one"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "keyboardShortcuts": "Keyboard Shortcuts",
+    "toggleDarkMode": "Toggle Dark Mode",
+    "toggleStyles": "Toggle Styles",
+    "openSidebar": "Open Sidebar",
+    "themeSettings": "Theme Settings",
+    "autoApply": "Auto-apply themes when visiting websites",
+    "syncEnabled": "Sync themes across devices",
+    "saveSettings": "Save Settings",
+    "saving": "Saving..."
+  },
+  "languages": {
+    "english": "English",
+    "spanish": "Spanish",
+    "french": "French",
+    "german": "German",
+    "portuguese": "Portuguese",
+    "polish": "Polish"
+  }
+}

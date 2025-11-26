@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "title": "Hub Motywów",
+    "website": "Strona internetowa",
+    "quickActions": "Szybkie akcje",
+    "darkMode": "Tryb ciemny",
+    "customTheme": "Niestandardowy motyw",
+    "enabled": "Włączony",
+    "disabled": "Wyłączony",
+    "themeManager": "Menedżer motywów",
+    "newTheme": "Nowy motyw",
+    "keyboardShortcuts": "Naciśnij Alt+T, aby otworzyć • Alt+D dla trybu ciemnego • Alt+S dla motywów"
+  },
+  "themes": {
+    "createTheme": "Utwórz motyw",
+    "themeName": "Nazwa motywu",
+    "cssStyles": "Style CSS",
+    "javascriptCode": "Kod JavaScript (Opcjonalnie)",
+    "test": "Testuj",
+    "saveTheme": "Zapisz motyw",
+    "import": "Importuj",
+    "export": "Eksportuj",
+    "noThemes": "Jeszcze nie ma niestandardowych motywów dla tej strony internetowej.",
+    "clickToCreate": "Kliknij \"Nowy motyw\", aby utworzyć jeden"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "language": "Język",
+    "keyboardShortcuts": "Skróty klawiszowe",
+    "toggleDarkMode": "Przełącz tryb ciemny",
+    "toggleStyles": "Przełącz style",
+    "openSidebar": "Otwórz panel boczny",
+    "themeSettings": "Ustawienia motywów",
+    "autoApply": "Automatycznie stosuj motywy podczas odwiedzania stron internetowych",
+    "syncEnabled": "Synchronizuj motywy między urządzeniami",
+    "saveSettings": "Zapisz ustawienia",
+    "saving": "Zapisywanie..."
+  },
+  "languages": {
+    "english": "Angielski",
+    "spanish": "Hiszpański",
+    "french": "Francuski",
+    "german": "Niemiecki",
+    "portuguese": "Portugalski",
+    "polish": "Polski"
+  }
+}

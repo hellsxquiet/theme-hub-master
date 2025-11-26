@@ -1,0 +1,116 @@
+/* Universal Dark Mode Theme - Works on most websites */
+html[data-theme-hub-dark] {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark] body {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+/* Common elements */
+html[data-theme-hub-dark] div,
+html[data-theme-hub-dark] section,
+html[data-theme-hub-dark] article,
+html[data-theme-hub-dark] aside,
+html[data-theme-hub-dark] main,
+html[data-theme-hub-dark] nav,
+html[data-theme-hub-dark] header,
+html[data-theme-hub-dark] footer {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* Text elements */
+html[data-theme-hub-dark] h1,
+html[data-theme-hub-dark] h2,
+html[data-theme-hub-dark] h3,
+html[data-theme-hub-dark] h4,
+html[data-theme-hub-dark] h5,
+html[data-theme-hub-dark] h6,
+html[data-theme-hub-dark] p,
+html[data-theme-hub-dark] span,
+html[data-theme-hub-dark] a,
+html[data-theme-hub-dark] li,
+html[data-theme-hub-dark] td,
+html[data-theme-hub-dark] th {
+  color: #ffffff !important;
+}
+
+/* Links */
+html[data-theme-hub-dark] a {
+  color: #60a5fa !important;
+}
+
+html[data-theme-hub-dark] a:hover {
+  color: #93c5fd !important;
+}
+
+/* Form elements */
+html[data-theme-hub-dark] input,
+html[data-theme-hub-dark] textarea,
+html[data-theme-hub-dark] select {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+/* Buttons */
+html[data-theme-hub-dark] button {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+html[data-theme-hub-dark] button:hover {
+  background-color: #404040 !important;
+}
+
+/* Cards and containers */
+html[data-theme-hub-dark] .card,
+html[data-theme-hub-dark] [class*="card"],
+html[data-theme-hub-dark] [class*="box"],
+html[data-theme-hub-dark] [class*="container"] {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+/* Navigation */
+html[data-theme-hub-dark] nav,
+html[data-theme-hub-dark] [class*="nav"],
+html[data-theme-hub-dark] [class*="menu"] {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+/* Tables */
+html[data-theme-hub-dark] table,
+html[data-theme-hub-dark] th,
+html[data-theme-hub-dark] td {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+/* Code blocks */
+html[data-theme-hub-dark] code,
+html[data-theme-hub-dark] pre {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+/* Scrollbars */
+html[data-theme-hub-dark] ::-webkit-scrollbar {
+  background-color: #2d2d2d !important;
+}
+
+html[data-theme-hub-dark] ::-webkit-scrollbar-thumb {
+  background-color: #404040 !important;
+}
+
+html[data-theme-hub-dark] ::-webkit-scrollbar-thumb:hover {
+  background-color: #555555 !important;
+}

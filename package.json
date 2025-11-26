@@ -1,8 +1,8 @@
 {
-  "name": "theme-hub-extension",
-  "displayName": "Theme hub extension",
-  "version": "0.0.1",
-  "description": "A basic Plasmo extension.",
+  "name": "theme-hub",
+  "displayName": "Theme Hub",
+  "version": "1.0.0",
+  "description": "Inject custom CSS and JavaScript into websites with dark mode support",
   "author": "Bryce Wilson",
   "scripts": {
     "dev": "plasmo dev",
@@ -12,7 +12,10 @@
   "dependencies": {
     "plasmo": "0.90.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "lucide-react": "^0.263.1",
+    "i18next": "^23.7.16",
+    "react-i18next": "^14.0.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
@@ -20,12 +23,21 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.33",
     "prettier": "3.2.4",
+    "tailwindcss": "^3.4.1",
     "typescript": "5.3.3"
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "<all_urls>"
+    ],
+    "permissions": [
+      "storage",
+      "activeTab",
+      "scripting",
+      "sidePanel"
     ]
   }
 }

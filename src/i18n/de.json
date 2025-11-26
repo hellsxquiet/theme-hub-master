@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "title": "Theme Hub",
+    "website": "Website",
+    "quickActions": "Schnellaktionen",
+    "darkMode": "Dunkler Modus",
+    "customTheme": "Benutzerdefiniertes Theme",
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "themeManager": "Theme-Manager",
+    "newTheme": "Neues Theme",
+    "keyboardShortcuts": "Drücken Sie Alt+T zum Öffnen • Alt+D für dunklen Modus • Alt+S für Themes"
+  },
+  "themes": {
+    "createTheme": "Theme Erstellen",
+    "themeName": "Theme-Name",
+    "cssStyles": "CSS-Stile",
+    "javascriptCode": "JavaScript-Code (Optional)",
+    "test": "Testen",
+    "saveTheme": "Theme Speichern",
+    "import": "Importieren",
+    "export": "Exportieren",
+    "noThemes": "Noch keine benutzerdefinierten Themes für diese Website.",
+    "clickToCreate": "Klicken Sie auf \"Neues Theme\", um eines zu erstellen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache",
+    "keyboardShortcuts": "Tastenkombinationen",
+    "toggleDarkMode": "Dunklen Modus Umschalten",
+    "toggleStyles": "Stile Umschalten",
+    "openSidebar": "Seitenleiste Öffnen",
+    "themeSettings": "Theme-Einstellungen",
+    "autoApply": "Themes automatisch beim Besuch von Websites anwenden",
+    "syncEnabled": "Themes über Geräte synchronisieren",
+    "saveSettings": "Einstellungen Speichern",
+    "saving": "Speichern..."
+  },
+  "languages": {
+    "english": "Englisch",
+    "spanish": "Spanisch",
+    "french": "Französisch",
+    "german": "Deutsch",
+    "portuguese": "Portugiesisch",
+    "polish": "Polnisch"
+  }
+}

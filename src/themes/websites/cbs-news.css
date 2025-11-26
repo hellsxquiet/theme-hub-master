@@ -1,0 +1,99 @@
+/* CBS News Dark Mode Theme */
+html[data-theme-hub-dark-cbsnews-com] {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] body {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+/* CBS News specific styling */
+html[data-theme-hub-dark-cbsnews-com] .content__main {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__headline {
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__body {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__meta {
+  color: #b0b0b0 !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__section {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__section h2 {
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .content__section p {
+  color: #e0e0e0 !important;
+}
+
+/* Navigation */
+html[data-theme-hub-dark-cbsnews-com] .navigation {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .navigation a {
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .navigation a:hover {
+  color: #60a5fa !important;
+}
+
+/* Cards and containers */
+html[data-theme-hub-dark-cbsnews-com] .card {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .card h3 {
+  color: #ffffff !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] .card p {
+  color: #e0e0e0 !important;
+}
+
+/* Links */
+html[data-theme-hub-dark-cbsnews-com] a {
+  color: #60a5fa !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] a:hover {
+  color: #93c5fd !important;
+}
+
+/* Buttons */
+html[data-theme-hub-dark-cbsnews-com] button {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}
+
+html[data-theme-hub-dark-cbsnews-com] button:hover {
+  background-color: #404040 !important;
+}
+
+/* Forms */
+html[data-theme-hub-dark-cbsnews-com] input,
+html[data-theme-hub-dark-cbsnews-com] textarea,
+html[data-theme-hub-dark-cbsnews-com] select {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #404040 !important;
+}

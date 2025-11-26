@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "title": "Hub de Thèmes",
+    "website": "Site Web",
+    "quickActions": "Actions Rapides",
+    "darkMode": "Mode Sombre",
+    "customTheme": "Thème Personnalisé",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "themeManager": "Gestionnaire de Thèmes",
+    "newTheme": "Nouveau Thème",
+    "keyboardShortcuts": "Appuyez sur Alt+T pour ouvrir • Alt+D pour le mode sombre • Alt+S pour les thèmes"
+  },
+  "themes": {
+    "createTheme": "Créer un Thème",
+    "themeName": "Nom du Thème",
+    "cssStyles": "Styles CSS",
+    "javascriptCode": "Code JavaScript (Optionnel)",
+    "test": "Tester",
+    "saveTheme": "Sauvegarder le Thème",
+    "import": "Importer",
+    "export": "Exporter",
+    "noThemes": "Aucun thème personnalisé pour ce site web pour l'instant.",
+    "clickToCreate": "Cliquez sur \"Nouveau Thème\" pour en créer un"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "keyboardShortcuts": "Raccourcis Clavier",
+    "toggleDarkMode": "Basculer le Mode Sombre",
+    "toggleStyles": "Basculer les Styles",
+    "openSidebar": "Ouvrir le Panneau Latéral",
+    "themeSettings": "Paramètres des Thèmes",
+    "autoApply": "Appliquer automatiquement les thèmes lors de la visite des sites web",
+    "syncEnabled": "Synchroniser les thèmes entre appareils",
+    "saveSettings": "Sauvegarder les Paramètres",
+    "saving": "Sauvegarde..."
+  },
+  "languages": {
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "french": "Français",
+    "german": "Allemand",
+    "portuguese": "Portugais",
+    "polish": "Polonais"
+  }
+}

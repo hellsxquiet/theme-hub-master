@@ -1,0 +1,47 @@
+{
+  "sidebar": {
+    "title": "Centro de Temas",
+    "website": "Sitio Web",
+    "quickActions": "Acciones Rápidas",
+    "darkMode": "Modo Oscuro",
+    "customTheme": "Tema Personalizado",
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "themeManager": "Administrador de Temas",
+    "newTheme": "Nuevo Tema",
+    "keyboardShortcuts": "Presiona Alt+T para abrir • Alt+D para modo oscuro • Alt+S para temas"
+  },
+  "themes": {
+    "createTheme": "Crear Tema",
+    "themeName": "Nombre del Tema",
+    "cssStyles": "Estilos CSS",
+    "javascriptCode": "Código JavaScript (Opcional)",
+    "test": "Probar",
+    "saveTheme": "Guardar Tema",
+    "import": "Importar",
+    "export": "Exportar",
+    "noThemes": "Aún no hay temas personalizados para este sitio web.",
+    "clickToCreate": "Haz clic en \"Nuevo Tema\" para crear uno"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "keyboardShortcuts": "Atajos de Teclado",
+    "toggleDarkMode": "Alternar Modo Oscuro",
+    "toggleStyles": "Alternar Estilos",
+    "openSidebar": "Abrir Panel Lateral",
+    "themeSettings": "Configuración de Temas",
+    "autoApply": "Aplicar temas automáticamente al visitar sitios web",
+    "syncEnabled": "Sincronizar temas entre dispositivos",
+    "saveSettings": "Guardar Configuración",
+    "saving": "Guardando..."
+  },
+  "languages": {
+    "english": "Inglés",
+    "spanish": "Español",
+    "french": "Francés",
+    "german": "Alemán",
+    "portuguese": "Portugués",
+    "polish": "Polaco"
+  }
+}
