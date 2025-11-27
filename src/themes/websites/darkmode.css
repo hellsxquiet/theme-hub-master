@@ -1,0 +1,393 @@
+html {
+  filter: invert(1) hue-rotate(180deg);
+  background: #1a1919;
+}
+
+img,
+video,
+svg,
+iframe,
+picture,
+source,
+object,
+embed,
+canvas,
+.fc-event-skin.ev-course,
+.dlCBz,
+.legend-course,
+.Card-card-image-uV6Bu,
+#collection-title .icon,
+#resources-left-menu-wrapper .inline-icon,
+#toolbar-add span span,
+#toolbar-add-question span span,
+.folder-icon,
+.share-calendar-option .ical-popup,
+.share-calendar-option a,
+.fcalendar-filter-menu-wrapper .realm-user .realm-title,
+.fcalendar-filter-menu-wrapper.use-subtitles .has-subtitle .realm-title-wrapper,
+.adv-option-btn.toggle-comments.adv-option-on,
+#calender-smartbox-tabs .active span,
+#attachment-selector .infotip,
+.mini.event-icon,
+.notification-settings-wrapper .link-btn span,
+#left-nav #menu-s-main .menu a span,
+.common-assessment-icon,
+#collection-title .school-profile-link,
+.edge-filter-option.edge-filter-type-all span,
+.edge-filter-option.edge-filter-type-child-updates span,
+.edge-filter-option.edge-filter-type-polls span,
+#edit-course-switcher-select-nid-menu .ui-selectmenu-group li a,
+#left-nav #menu-s-main .menu a span,
+.enrollment-admin .user-name .admin-icon,
+.attendance-course-title,
+body .submit-span-wrapper,
+.course-materials-added,
+.grade-post,
+.all-icon.notify-icon,
+.notif-filter .notify-icon,
+.link-btn.download span,
+.library-collection .collection-title.resources-app-title:hover .app-logo img,
+.library-collection .collection-title.resources-app-title.active .app-logo img,
+.edge-filter-option.edge-filter-type-updates span,
+.update-sentence-inner > .arrow-right,
+.gradebook-course-title .arrow,
+body span.infotip,
+#s-grades-export-form-1 .form-checkbox-title,
+.attach-file-icon,
+.my-courses-item-list .admin-icon,
+.my-groups-item-list .admin-icon,
+.my-courses-item-list .admin-icon-shield,
+.my-groups-item-list .admin-icon-shield,
+.assignment-submitting-success-successImage-2223124178,
+input[type="submit"],
+input[type="button"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.course-dashboard__accessibility-icon svg {
+  display: none !important;
+}
+
+._1bqN_ {
+  background-color: #cdcdcd !important;
+  color: #6c6c6c !important;
+}
+
+._1bqN_:hover {
+  background-color: #d3d3d3 !important;
+  color: #6c6c6c !important;
+}
+
+.popups-title {
+  background: #f1f1f1;
+  color: #302b2b;
+}
+
+._2T2dA {
+  background-color: #ffffff;
+}
+
+._1EyV_ {
+  color: #0d6db5 !important;
+}
+
+._9GDcm,
+.Header-bottom-border-2ZE-7 {
+  background-color: #f3f3f3;
+}
+
+.Card-card-data-17m6S {
+  background: #e1e1e1 !important;
+}
+
+body .submit-span-wrapper {
+  color: white;
+}
+
+._2T2dA {
+  background-color: white !important;
+}
+
+#taught-courses-switcher .ui-selectmenu.ui-state-active,
+.links li.active a,
+.tabs.secondary li.active a,
+.link-btn.active,
+.filter-item a.active,
+.link-btn.active:active {
+  background: #e3e3e3 !important;
+  color: #000000 !important;
+}
+
+.util-neon-avatar-3J4cU img {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.dVlNp {
+  background: #e3e3e3 !important;
+  color: #000000 !important;
+}
+
+.dVlNp:hover {
+  background: #f3f3f3 !important;
+  border-color: rgb(226, 226, 226) !important;
+}
+
+.has-right-col #center-inner {
+  background: none !important;
+}
+
+#course-materials-dropdown,
+#roster-wrapper .enrollment-search input {
+  background-color: #d3d3d3;
+  border: none;
+}
+
+#roster-wrapper .enrollment-search .go-btn {
+  background-color: unset !important;
+}
+
+.enrollment-search .go-btn {
+  height: 13px !important;
+}
+
+.nav-breadcrumb-container-1732584003 {
+  background-color: #848484 !important;
+}
+
+.nav-breadcrumb-subContainer-4084051826:before {
+  background: none !important;
+}
+
+.nav-breadcrumb-bracket-3282107711 {
+  color: #fff !important;
+}
+
+.course-dashboard .sgy-card {
+  background: #ebebeb !important;
+}
+
+#main-content-wrapper,
+#main {
+  background: #ffffff !important;
+  border-radius: 7px !important;
+}
+
+.has-right-col #center-top {
+  background: none !important;
+}
+
+.materials-filter-wrapper {
+  border-radius: 7px !important;
+}
+
+body:not(.is-detail-layout) #sidebar-left .active-trail a,
+.folder-contents-cell,
+.materials-top,
+#main-content-wrapper,
+#main,
+.roster-top,
+#center-top,
+.enrollment-user-list,
+.enrollment-view-nav,
+fieldset,
+#s-user-set-notifications-form th.email-notify {
+  background: #f2f2f2 !important;
+}
+
+.gradebook-course.hierarchical-grading-report .summary-course {
+  background-color: #f7f7f7 !important;
+}
+
+.link-btn {
+  background: none !important;
+}
+
+body ul.primary {
+  background: none;
+}
+
+#header > header > nav > ul > li > button,
+#header > header > nav > ul > li > div > button,
+._24W2g,
+._9GDcm,
+._1Z0RM,
+._3RmDr {
+  background-color: #e2e2e2 !important;
+}
+
+._2T2dA,
+._3_bfp {
+  background-color: #cdcdcd !important;
+}
+
+button .util-caret-icon-modern-1iz99 {
+  color: #fff;
+}
+
+.Header-bottom-border-2ZE-7 {
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.04))
+    drop-shadow(2px 0 8px rgba(0, 0, 0, 0.08));
+}
+
+.S42JQ {
+  background-color: #e3e3e3 !important;
+}
+
+._1YkZP,
+.QshRx {
+  background-color: #cdcdcd !important;
+}
+
+._1YkZP {
+  background-color: #d3d3d3 !important;
+}
+
+.util-hover-background-color-cloud-grey-wHghL:hover {
+  background-color: #e6e6e6 !important;
+}
+
+.Header-bottom-border-2ZE-7,
+._3v0y7 {
+  border-top: 3px solid rgb(203 203 203) !important;
+}
+
+._23_WZ,
+#copyright,
+.dVlNp,
+._16XsF,
+._2K08O {
+  border-top: none !important;
+}
+
+._26UWf,
+._3RmDr {
+  background-color: #cdcdcd !important;
+}
+
+.util-v2-header-background-color-22JtI:hover,
+.L1I_b {
+  background-color: #dfdfdf !important;
+}
+
+#s-user-edit-calendar-feed-settings-form .submit-span-wrapper {
+  background: none !important;
+}
+
+.ui-selectmenu-menu .ui-selectmenu-group:hover {
+  background: #eef3f8 !important;
+}
+
+#edit-course-switcher-select-nid-menu .ui-selectmenu-group li:hover a {
+  background: none !important;
+}
+
+.course-dashboard .sgy-card:hover .sgy-card-lens:after {
+  background: rgb(255 255 255 / 39%) !important;
+}
+
+[data-theme="modern"]
+  .materials-filter-wrapper
+  .action-links
+  .action-view-assignments
+  a:hover,
+.materials-filter-wrapper .action-links a:hover {
+  background-color: rgb(229 225 225 / 89%) !important;
+}
+
+.materials-top,
+#folder-contents-table .folder-contents-cell {
+  border-bottom: 1px solid #000 !important;
+}
+
+.materials-filter-wrapper .action-links-wrapper .action-links-unfold {
+  outline: 1px solid #000;
+}
+
+.date-header h4 {
+  border-top: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+a.ui-selectmenu,
+.notification-settings-wrapper {
+  background: #dbdbdb !important;
+  border: none !important;
+}
+
+#taught-courses-switcher .ui-selectmenu.ui-state-active,
+.link-btn.active {
+  border: none !important;
+  outline: 1px solid #000 !important;
+}
+
+.link-btn {
+  border: none !important;
+}
+
+.s-rte table.s_table.s_table_border th,
+.s-rte table.s_table.s_table_border td {
+  border: 1px solid #000 !important;
+}
+
+.util-menu-row-link-2dTZi:visited,
+.util-menu-row-link-2dTZi {
+  background-color: #cecece !important;
+}
+
+.util-menu-row-link-2dTZi:hover,
+.util-menu-row-link-wrapper-1EJ4Z:hover {
+  background-color: #eef3f8 !important;
+}
+
+.materials-filter-wrapper .action-links-wrapper .action-links-unfold {
+  background-color: #dbdbdb !important;
+}
+
+#right-column .course-action-btns .link-btn {
+  background-color: #ececec !important;
+  color: black !important;
+}
+
+._31GLY:hover,
+#header > header > nav > ul > li > button:hover,
+#header > header > nav > ul > li > div > button:hover {
+  background-color: #dfdfdf !important;
+}
+
+.course-dashboard .sgy-card:hover .course-dashboard__administrators {
+  color: orange !important;
+  font-weight: 600 !important;
+}
+
+.theme-2016-layout #right-column-inner > div:not(:empty),
+.theme-2016 #right-column-inner > div:not(:empty) {
+  background: #f7f7f7 !important;
+}
+
+.theme-2016-layout #right-column-inner > div:not(:empty) {
+  box-shadow: 0 1px 3px 0 rgb(163 153 153 / 15%) !important;
+}
+
+#multi-website-theme-label {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font:
+    12px/1.2 system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 6px;
+  z-index: 2147483647;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}

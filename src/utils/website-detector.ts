@@ -17,7 +17,6 @@ export class WebsiteDetector {
   getWebsiteName(hostname: string): string {
     // Common website name mappings
     const websiteNames: Record<string, string> = {
-      "google.com": "Google",
       "facebook.com": "Facebook",
       "twitter.com": "Twitter",
       "x.com": "X (Twitter)",
@@ -35,7 +34,8 @@ export class WebsiteDetector {
       "nytimes.com": "The New York Times",
       "cnn.com": "CNN",
       "bbc.com": "BBC",
-      "medium.com": "Medium"
+      "medium.com": "Medium",
+      "schoology.com": "Schoology"
     }
 
     return websiteNames[hostname] || this.capitalizeHostname(hostname)
@@ -64,8 +64,8 @@ export class WebsiteDetector {
       entertainment: ["netflix.com", "spotify.com", "youtube.com"],
       shopping: ["amazon.com"],
       development: ["github.com", "stackoverflow.com"],
-      search: ["google.com"],
-      reference: ["wikipedia.org"]
+      reference: ["wikipedia.org"],
+      education: ["schoology.com"]
     }
 
     for (const [category, domains] of Object.entries(categories)) {
@@ -85,7 +85,6 @@ export class WebsiteDetector {
       "cnn.com",
       "bbc.com",
       "medium.com",
-      "google.com",
       "facebook.com",
       "twitter.com",
       "x.com",
@@ -98,7 +97,8 @@ export class WebsiteDetector {
       "spotify.com",
       "github.com",
       "stackoverflow.com",
-      "wikipedia.org"
+      "wikipedia.org",
+      "schoology.com"
     ]
 
     // Check if hostname is exactly in supported list or is a subdomain of a supported site

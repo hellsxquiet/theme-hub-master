@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+import { handleError, handleSuccess } from "~utils/error-handler"
 import logger from "~utils/logger"
 
 export function useTheme(website: string) {
@@ -26,7 +27,10 @@ export function useTheme(website: string) {
         setThemes(response.themes)
       }
     } catch (error) {
-      logger.error("Error loading themes:", error)
+      handleError(error, {
+        source: "useTheme.loadThemes",
+        action: "GET_THEMES"
+      })
     } finally {
       setLoading(false)
     }
@@ -45,8 +49,14 @@ export function useTheme(website: string) {
 
       // Reload themes to ensure state consistency
       loadThemes()
+      handleSuccess(newState ? "Dark mode enabled" : "Dark mode disabled", {
+        source: "useTheme.toggleDarkMode"
+      })
     } catch (error) {
-      logger.error("Error toggling dark mode:", error)
+      handleError(error, {
+        source: "useTheme.toggleDarkMode",
+        action: "DARK_MODE_TOGGLE"
+      })
     }
   }
 
@@ -62,9 +72,18 @@ export function useTheme(website: string) {
 
         // Reload themes
         loadThemes()
+        handleSuccess(
+          currentTheme?.enabled
+            ? "Custom theme disabled"
+            : "Custom theme enabled",
+          { source: "useTheme.toggleTheme" }
+        )
       }
     } catch (error) {
-      logger.error("Error toggling theme:", error)
+      handleError(error, {
+        source: "useTheme.toggleTheme",
+        action: "THEME_TOGGLE"
+      })
     }
   }
 

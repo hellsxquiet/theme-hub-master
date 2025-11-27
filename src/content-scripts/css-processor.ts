@@ -1,3 +1,5 @@
+import { websiteStyles } from "~themes/websites/styles"
+
 export class CSSProcessor {
   private darkModeStyles: string = `
     /* Theme Hub Dark Mode Styles */
@@ -16,81 +18,107 @@ export class CSSProcessor {
     html[data-theme-hub-dark] [data-theme-hub-preserve] {
       filter: none !important;
     }
-  `;
-  
+  `
+
   process(css: string, website: string): string {
     // Add website-specific scoping if needed
-    let processedCSS = this.scopeCSS(css, website);
-    
+    let processedCSS = this.scopeCSS(css, website)
+
     // Add vendor prefixes
-    processedCSS = this.addVendorPrefixes(processedCSS);
-    
-    return processedCSS;
+    processedCSS = this.addVendorPrefixes(processedCSS)
+
+    return processedCSS
   }
-  
+
   generateDarkModeCSS(website: string): string {
+    // Check if we have specific styles for this website
+    if (websiteStyles[website]) {
+      return websiteStyles[website]
+    }
+
+    // Check for parent domain match (e.g., app.schoology.com -> schoology.com)
+    const parentDomain = Object.keys(websiteStyles).find((domain) =>
+      website.endsWith("." + domain)
+    )
+
+    if (parentDomain) {
+      const styles = websiteStyles[parentDomain]
+      // Replace the parent domain attribute with the current website attribute
+      // e.g. data-theme-hub-dark-schoology-com -> data-theme-hub-dark-app-schoology-com
+      const oldAttr = `data-theme-hub-dark-${parentDomain.replace(/\./g, "-")}`
+      const newAttr = `data-theme-hub-dark-${website.replace(/\./g, "-")}`
+
+      return styles.split(oldAttr).join(newAttr)
+    }
+
     return `
       /* Theme Hub Dark Mode for ${website} */
-      html[data-theme-hub-dark-${website.replace(/\./g, '-')}],
+      html[data-theme-hub-dark-${website.replace(/\./g, "-")}],
       html[data-theme-hub-dark] {
         background-color: #1a1a1a !important;
         color: #ffffff !important;
       }
       
-      html[data-theme-hub-dark-${website.replace(/\./g, '-')}] body,
+      html[data-theme-hub-dark-${website.replace(/\./g, "-")}] body,
       html[data-theme-hub-dark] body {
         background-color: #1a1a1a !important;
         color: #ffffff !important;
       }
       
-      html[data-theme-hub-dark-${website.replace(/\./g, '-')}] *:not(img):not(video):not(iframe):not(canvas):not(svg),
+      html[data-theme-hub-dark-${website.replace(/\./g, "-")}] *:not(img):not(video):not(iframe):not(canvas):not(svg),
       html[data-theme-hub-dark] *:not(img):not(video):not(iframe):not(canvas):not(svg) {
         background-color: transparent !important;
         color: inherit !important;
       }
       
       ${this.darkModeStyles}
-    `;
+    `
   }
-  
+
   private scopeCSS(css: string, website: string): string {
     // For now, return CSS as-is
     // In future, could add website-specific scoping
-    return css;
+    return css
   }
-  
+
   private addVendorPrefixes(css: string): string {
     // Add common vendor prefixes
-    const prefixes = ['-webkit-', '-moz-', '-ms-', '-o-'];
-    const properties = ['transform', 'transition', 'animation', 'border-radius', 'box-shadow'];
-    
-    let processedCSS = css;
-    
-    properties.forEach(prop => {
-      const regex = new RegExp(`\\b${prop}\\s*:`, 'g');
+    const prefixes = ["-webkit-", "-moz-", "-ms-", "-o-"]
+    const properties = [
+      "transform",
+      "transition",
+      "animation",
+      "border-radius",
+      "box-shadow"
+    ]
+
+    let processedCSS = css
+
+    properties.forEach((prop) => {
+      const regex = new RegExp(`\\b${prop}\\s*:`, "g")
       processedCSS = processedCSS.replace(regex, (match) => {
-        return prefixes.map(prefix => `${prefix}${match}`).join('') + match;
-      });
-    });
-    
-    return processedCSS;
+        return prefixes.map((prefix) => `${prefix}${match}`).join("") + match
+      })
+    })
+
+    return processedCSS
   }
-  
+
   detectExistingDarkMode(): boolean {
     // Check if website already has dark mode
     const darkModeSelectors = [
       '[data-theme="dark"]',
       '[data-mode="dark"]',
-      '.dark-mode',
-      '.dark',
+      ".dark-mode",
+      ".dark",
       '[class*="dark"]'
-    ];
-    
-    return darkModeSelectors.some(selector => {
-      return document.querySelector(selector) !== null;
-    });
+    ]
+
+    return darkModeSelectors.some((selector) => {
+      return document.querySelector(selector) !== null
+    })
   }
-  
+
   smartInvertColors(): string {
     return `
       /* Smart color inversion that preserves important elements */
@@ -106,6 +134,6 @@ export class CSSProcessor {
       .theme-hub-smart-invert [data-theme-hub-preserve] {
         filter: invert(1) hue-rotate(180deg);
       }
-    `;
+    `
   }
 }

@@ -15,7 +15,9 @@ class ThemeInjector implements CSSInjector, JSInjector {
   private darkModeProcessor: DarkModeProcessor
 
   private getWebsiteDomain(): string {
-    return window.location.hostname.replace("www.", "")
+    const domain = window.location.hostname.replace("www.", "")
+    logger.info(`Theme Hub: Detected domain: ${domain}`)
+    return domain
   }
 
   constructor() {
@@ -194,8 +196,12 @@ class ThemeInjector implements CSSInjector, JSInjector {
     this.remove(website)
   }
 
-  private toggleDarkMode(payload: { website: string; enabled: boolean }) {
+  private toggleDarkMode(payload: { website: string; enabled?: boolean }) {
     logger.info(`Toggling dark mode for ${payload.website}`)
+    if (payload.enabled === undefined) {
+      this.darkModeProcessor.toggle()
+      return
+    }
     if (payload.enabled) {
       this.darkModeProcessor.enable()
     } else {
