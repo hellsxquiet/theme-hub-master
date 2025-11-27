@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Palette, Moon, Sun, Settings, Code, Globe } from "lucide-react";
+import { Palette, Moon, Sun, Settings, Code, Globe, AlertCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/useTheme";
 import { useWebsite } from "./hooks/useWebsite";
@@ -11,11 +11,11 @@ import "../i18n";
 function Sidebar() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'themes' | 'settings'>('themes');
-  const { currentWebsite, websiteName } = useWebsite();
+  const { currentWebsite, websiteName, isSupported } = useWebsite();
   const { themes, darkModeEnabled, toggleDarkMode, toggleTheme } = useTheme(currentWebsite);
   
   return (
-    <div className="w-80 h-screen bg-background dark:bg-background-dark text-gray-900 dark:text-white flex flex-col">
+    <div className="w-full h-screen bg-background dark:bg-background-dark text-gray-900 dark:text-white flex flex-col overflow-x-hidden">
       {/* Header */}
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between">
@@ -65,71 +65,83 @@ function Sidebar() {
       {/* Content */}
       <div className="flex-1 overflow-y-auto">
         {activeTab === 'themes' ? (
-          <div className="p-4 space-y-4">
-            {/* Quick Actions */}
-            <div className="space-y-3">
-              <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('sidebar.quickActions')}</h2>
-              
-              {/* Dark Mode Toggle */}
-              <div className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                <div className="flex items-center space-x-3">
-                  {darkModeEnabled ? (
-                    <Moon className="w-5 h-5 text-primary" />
-                  ) : (
-                    <Sun className="w-5 h-5 text-yellow-500" />
-                  )}
-                  <div>
-                    <div className="font-medium">{t('sidebar.darkMode')}</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {darkModeEnabled ? t('sidebar.enabled') : t('sidebar.disabled')}
-                    </div>
-                  </div>
-                </div>
-                <button
-                  onClick={() => toggleDarkMode()}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    darkModeEnabled ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-600'
-                  }`}
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      darkModeEnabled ? 'translate-x-6' : 'translate-x-1'
-                    }`}
-                  />
-                </button>
+          !isSupported ? (
+            <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+              <div className="text-gray-500 dark:text-gray-400 mb-4">
+                <AlertCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                <h2 className="text-lg font-medium">Website Not Supported</h2>
               </div>
-              
-              {/* Theme Toggle */}
-              {themes[currentWebsite] && (
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                Theme Hub cannot run on this page.
+              </p>
+            </div>
+          ) : (
+            <div className="p-4 space-y-4">
+              {/* Quick Actions */}
+              <div className="space-y-3">
+                <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('sidebar.quickActions')}</h2>
+                
+                {/* Dark Mode Toggle */}
                 <div className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                   <div className="flex items-center space-x-3">
-                    <Palette className="w-5 h-5 text-primary" />
+                    {darkModeEnabled ? (
+                      <Moon className="w-5 h-5 text-primary" />
+                    ) : (
+                      <Sun className="w-5 h-5 text-yellow-500" />
+                    )}
                     <div>
-                    <div className="font-medium">{t('sidebar.customTheme')}</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                      {themes[currentWebsite]?.enabled ? t('sidebar.enabled') : t('sidebar.disabled')}
+                      <div className="font-medium">{t('sidebar.darkMode')}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        {darkModeEnabled ? t('sidebar.enabled') : t('sidebar.disabled')}
+                      </div>
                     </div>
                   </div>
-                  </div>
                   <button
-                    onClick={() => toggleTheme()}
+                    onClick={() => toggleDarkMode()}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      themes[currentWebsite]?.enabled ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-600'
+                      darkModeEnabled ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-600'
                     }`}
                   >
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        themes[currentWebsite]?.enabled ? 'translate-x-6' : 'translate-x-1'
+                        darkModeEnabled ? 'translate-x-6' : 'translate-x-1'
                       }`}
                     />
                   </button>
                 </div>
-              )}
+                
+                {/* Theme Toggle */}
+                {themes[currentWebsite] && (
+                  <div className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center space-x-3">
+                      <Palette className="w-5 h-5 text-primary" />
+                      <div>
+                      <div className="font-medium">{t('sidebar.customTheme')}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        {themes[currentWebsite]?.enabled ? t('sidebar.enabled') : t('sidebar.disabled')}
+                      </div>
+                    </div>
+                    </div>
+                    <button
+                      onClick={() => toggleTheme()}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                        themes[currentWebsite]?.enabled ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-600'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                          themes[currentWebsite]?.enabled ? 'translate-x-6' : 'translate-x-1'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                )}
+              </div>
+              
+              {/* Theme Manager */}
+              <ThemeManager currentWebsite={currentWebsite} />
             </div>
-            
-            {/* Theme Manager */}
-            <ThemeManager currentWebsite={currentWebsite} />
-          </div>
+          )
         ) : (
           <SettingsPanel />
         )}

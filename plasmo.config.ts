@@ -4,7 +4,8 @@ const config = {
       "storage",
       "activeTab",
       "scripting",
-      "sidePanel"
+      "sidePanel",
+      "tabs"
     ],
     host_permissions: [
       "<all_urls>"
@@ -52,7 +53,7 @@ const config = {
     type: "module"
   },
   side_panel: {
-    default_path: "sidebar.html"
+    default_path: "sidepanel.html"
   }
 }
 

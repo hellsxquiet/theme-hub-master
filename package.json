@@ -37,7 +37,8 @@
       "storage",
       "activeTab",
       "scripting",
-      "sidePanel"
+      "sidePanel",
+      "tabs"
     ]
   }
 }

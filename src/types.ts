@@ -12,6 +12,7 @@ export interface ContentScriptMessage {
     themeId?: string;
     css?: string;
     js?: string;
+    enabled?: boolean;
     settings?: ExtensionSettings;
   };
 }

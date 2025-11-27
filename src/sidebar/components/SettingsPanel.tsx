@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { Globe, Keyboard, Palette, Save } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { Globe, Keyboard, Palette, Save } from "lucide-react"
+import React, { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
+
+import logger from "~utils/logger"
 
 export function SettingsPanel() {
-  const { t } = useTranslation();
-  const [language, setLanguage] = useState('en');
+  const { t } = useTranslation()
+  const [language, setLanguage] = useState("en")
   const [shortcuts, setShortcuts] = useState({
-    toggleDarkMode: 'Alt+D',
-    toggleStyles: 'Alt+S',
-    openSidebar: 'Alt+T'
-  });
-  const [autoApply, setAutoApply] = useState(true);
-  const [syncEnabled, setSyncEnabled] = useState(false);
-  const [saving, setSaving] = useState(false);
-  
+    toggleDarkMode: "Alt+D",
+    toggleStyles: "Alt+S",
+    openSidebar: "Alt+T"
+  })
+  const [autoApply, setAutoApply] = useState(true)
+  const [syncEnabled, setSyncEnabled] = useState(false)
+  const [saving, setSaving] = useState(false)
+
   useEffect(() => {
-    loadSettings();
-  }, []);
-  
+    loadSettings()
+  }, [])
+
   const loadSettings = async () => {
     try {
-      const response = await chrome.runtime.sendMessage({ type: 'GET_SETTINGS' });
+      const response = await chrome.runtime.sendMessage({
+        type: "GET_SETTINGS"
+      })
       if (response?.settings) {
-        setLanguage(response.settings.language);
-        setShortcuts(response.settings.keyboardShortcuts);
-        setAutoApply(response.settings.autoApply);
-        setSyncEnabled(response.settings.syncEnabled);
+        setLanguage(response.settings.language)
+        setShortcuts(response.settings.keyboardShortcuts)
+        setAutoApply(response.settings.autoApply)
+        setSyncEnabled(response.settings.syncEnabled)
       }
     } catch (error) {
-      console.error("Error loading settings:", error);
+      logger.error("Error loading settings:", error)
     }
-  };
-  
+  }
+
   const saveSettings = async () => {
     try {
-      setSaving(true);
+      setSaving(true)
       await chrome.runtime.sendMessage({
-        type: 'SAVE_SETTINGS',
+        type: "SAVE_SETTINGS",
         payload: {
           settings: {
             language,
@@ -45,36 +49,37 @@ export function SettingsPanel() {
             syncEnabled
           }
         }
-      });
+      })
     } catch (error) {
-      console.error("Error saving settings:", error);
+      logger.error("Error saving settings:", error)
     } finally {
-      setSaving(false);
+      setSaving(false)
     }
-  };
-  
+  }
+
   const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'es', name: 'Español' },
-    { code: 'fr', name: 'Français' },
-    { code: 'de', name: 'Deutsch' },
-    { code: 'pt', name: 'Português' },
-    { code: 'pl', name: 'Polski' }
-  ];
-  
+    { code: "en", name: "English" },
+    { code: "es", name: "Español" },
+    { code: "fr", name: "Français" },
+    { code: "de", name: "Deutsch" },
+    { code: "pt", name: "Português" },
+    { code: "pl", name: "Polski" }
+  ]
+
   return (
     <div className="p-4 space-y-6">
       {/* Language Settings */}
       <div className="space-y-3">
         <div className="flex items-center space-x-2">
           <Globe className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Language</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Language
+          </h3>
         </div>
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="input-base"
-        >
+          className="input-base">
           {languages.map((lang) => (
             <option key={lang.code} value={lang.code}>
               {lang.name}
@@ -82,12 +87,14 @@ export function SettingsPanel() {
           ))}
         </select>
       </div>
-      
+
       {/* Keyboard Shortcuts */}
       <div className="space-y-3">
         <div className="flex items-center space-x-2">
           <Keyboard className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Keyboard Shortcuts</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Keyboard Shortcuts
+          </h3>
         </div>
         <div className="space-y-2">
           <div>
@@ -97,7 +104,9 @@ export function SettingsPanel() {
             <input
               type="text"
               value={shortcuts.toggleDarkMode}
-              onChange={(e) => setShortcuts({ ...shortcuts, toggleDarkMode: e.target.value })}
+              onChange={(e) =>
+                setShortcuts({ ...shortcuts, toggleDarkMode: e.target.value })
+              }
               className="input-base text-sm"
               placeholder="Alt+D"
             />
@@ -109,7 +118,9 @@ export function SettingsPanel() {
             <input
               type="text"
               value={shortcuts.toggleStyles}
-              onChange={(e) => setShortcuts({ ...shortcuts, toggleStyles: e.target.value })}
+              onChange={(e) =>
+                setShortcuts({ ...shortcuts, toggleStyles: e.target.value })
+              }
               className="input-base text-sm"
               placeholder="Alt+S"
             />
@@ -121,19 +132,23 @@ export function SettingsPanel() {
             <input
               type="text"
               value={shortcuts.openSidebar}
-              onChange={(e) => setShortcuts({ ...shortcuts, openSidebar: e.target.value })}
+              onChange={(e) =>
+                setShortcuts({ ...shortcuts, openSidebar: e.target.value })
+              }
               className="input-base text-sm"
               placeholder="Alt+T"
             />
           </div>
         </div>
       </div>
-      
+
       {/* Theme Settings */}
       <div className="space-y-3">
         <div className="flex items-center space-x-2">
           <Palette className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Theme Settings</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Theme Settings
+          </h3>
         </div>
         <div className="space-y-3">
           <label className="flex items-center space-x-3">
@@ -160,13 +175,12 @@ export function SettingsPanel() {
           </label>
         </div>
       </div>
-      
+
       {/* Save Button */}
       <button
         onClick={saveSettings}
         disabled={saving}
-        className="w-full btn-primary flex items-center justify-center space-x-2"
-      >
+        className="w-full btn-primary flex items-center justify-center space-x-2">
         {saving ? (
           <>
             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -180,5 +194,5 @@ export function SettingsPanel() {
         )}
       </button>
     </div>
-  );
+  )
 }
