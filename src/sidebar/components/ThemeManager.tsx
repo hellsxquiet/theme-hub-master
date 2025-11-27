@@ -39,14 +39,14 @@ export function ThemeManager({ currentWebsite }: ThemeManagerProps) {
   }
 
   const handleTestTheme = () => {
-    // Apply theme temporarily for testing
     chrome.runtime.sendMessage({
       type: "THEME_APPLY",
       payload: {
         website: currentWebsite,
         name: "Test Theme",
         css: cssCode,
-        js: jsCode
+        js: jsCode,
+        temporary: true
       }
     })
   }

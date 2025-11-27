@@ -21,6 +21,8 @@ export class MessageHandler {
         return await this.handleThemeApply(message.payload)
       case "THEME_REMOVE":
         return await this.handleThemeRemove(message.payload)
+      case "THEME_TOGGLE":
+        return await this.handleThemeToggle(message.payload)
       case "DARK_MODE_TOGGLE":
         return await this.handleDarkModeToggle(message.payload)
       case "GET_THEMES":
@@ -37,19 +39,21 @@ export class MessageHandler {
 
   private async handleThemeApply(payload: any) {
     try {
-      const theme = {
-        id: payload.themeId || `theme-${Date.now()}`,
-        website: payload.website,
-        name: payload.name || "Custom Theme",
-        css: payload.css || "",
-        js: payload.js || "",
-        darkMode: false,
-        enabled: true,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }
+      if (!payload?.temporary) {
+        const theme = {
+          id: payload.themeId || `theme-${Date.now()}`,
+          website: payload.website,
+          name: payload.name || "Custom Theme",
+          css: payload.css || "",
+          js: payload.js || "",
+          darkMode: false,
+          enabled: true,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        }
 
-      await this.storageService.saveTheme(payload.website, theme)
+        await this.storageService.saveTheme(payload.website, theme)
+      }
 
       // Send to content script for immediate application
       await this.sendToActiveTab({
@@ -57,7 +61,7 @@ export class MessageHandler {
         payload
       })
 
-      return { success: true, theme }
+      return { success: true }
     } catch (error) {
       logger.error("Error applying theme:", error)
       return { error: "Failed to apply theme" }
@@ -81,6 +85,27 @@ export class MessageHandler {
     }
   }
 
+  private async handleThemeToggle(payload: any) {
+    try {
+      const theme = await this.storageService.getTheme(payload.website)
+      if (theme) {
+        theme.enabled = !theme.enabled
+        theme.updatedAt = new Date().toISOString()
+        await this.storageService.saveTheme(payload.website, theme)
+
+        await this.sendToActiveTab({
+          type: "THEME_TOGGLE",
+          payload: { website: payload.website, enabled: theme.enabled }
+        })
+        return { success: true, enabled: theme.enabled }
+      }
+      return { error: "Theme not found" }
+    } catch (error) {
+      logger.error("Error toggling theme:", error)
+      return { error: "Failed to toggle theme" }
+    }
+  }
+
   private async handleDarkModeToggle(payload: any) {
     try {
       // Update storage
@@ -99,7 +124,7 @@ export class MessageHandler {
           css: "",
           js: "",
           darkMode: payload.enabled,
-          enabled: true,
+          enabled: false,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         }

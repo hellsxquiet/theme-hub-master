@@ -46,7 +46,7 @@ export function useTheme(website: string) {
       // Reload themes to ensure state consistency
       loadThemes()
     } catch (error) {
-      console.error("Error toggling dark mode:", error)
+      logger.error("Error toggling dark mode:", error)
     }
   }
 
@@ -64,7 +64,7 @@ export function useTheme(website: string) {
         loadThemes()
       }
     } catch (error) {
-      console.error("Error toggling theme:", error)
+      logger.error("Error toggling theme:", error)
     }
   }
 

@@ -41,7 +41,7 @@ class ThemeInjector implements CSSInjector, JSInjector {
           this.toggleDarkMode(message.payload)
           break
         case "THEME_TOGGLE":
-          this.toggleTheme(message.payload.website)
+          this.toggleTheme(message.payload.website, message.payload.enabled)
           break
       }
 
@@ -203,7 +203,16 @@ class ThemeInjector implements CSSInjector, JSInjector {
     }
   }
 
-  private toggleTheme(website: string) {
+  private toggleTheme(website: string, enabled?: boolean) {
+    if (enabled !== undefined) {
+      if (enabled) {
+        this.autoApplyThemes()
+      } else {
+        this.removeTheme(website)
+      }
+      return
+    }
+
     const currentCSS = this.cssMap.get(website)
     if (currentCSS) {
       this.removeTheme(website)
