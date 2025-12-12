@@ -198,12 +198,27 @@ class ThemeInjector implements CSSInjector, JSInjector {
 
   private toggleDarkMode(payload: { website: string; enabled?: boolean }) {
     logger.info(`Toggling dark mode for ${payload.website}`)
+    const ensureThemeConsistency = async () => {
+      try {
+        const response = await chrome.runtime.sendMessage({ type: "GET_THEMES" })
+        const website = this.getWebsiteDomain()
+        const theme = response?.themes?.[website]
+        if (theme && !theme.enabled) {
+          this.removeTheme(website)
+        }
+      } catch (e) {
+        logger.warn("Failed to ensure theme consistency during dark mode toggle", e)
+      }
+    }
+
     if (payload.enabled === undefined) {
       this.darkModeProcessor.toggle()
+      ensureThemeConsistency()
       return
     }
     if (payload.enabled) {
       this.darkModeProcessor.enable()
+      ensureThemeConsistency()
     } else {
       this.darkModeProcessor.disable()
     }

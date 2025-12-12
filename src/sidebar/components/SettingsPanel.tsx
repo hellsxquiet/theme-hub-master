@@ -1,4 +1,5 @@
-import { Globe, Keyboard, Palette, Save } from "lucide-react"
+import * as Checkbox from "@radix-ui/react-checkbox"
+import { Check, Globe, Keyboard, Palette, Save } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
@@ -67,38 +68,36 @@ export function SettingsPanel() {
   ]
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="space-y-6">
       {/* Language Settings */}
       <div className="space-y-3">
-        <div className="flex items-center space-x-2">
-          <Globe className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Language
-          </h3>
+        <div className="flex items-center space-x-2 text-sm font-semibold text-gray-400 uppercase tracking-wider px-1">
+          <Globe className="w-4 h-4" />
+          <span>Language</span>
         </div>
-        <select
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-          className="input-base">
-          {languages.map((lang) => (
-            <option key={lang.code} value={lang.code}>
-              {lang.name}
-            </option>
-          ))}
-        </select>
+        <div className="card p-4">
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="input-base w-full text-sm bg-transparent border-0 focus:ring-0 px-0 py-0">
+            {languages.map((lang) => (
+              <option key={lang.code} value={lang.code}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Keyboard Shortcuts */}
       <div className="space-y-3">
-        <div className="flex items-center space-x-2">
-          <Keyboard className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Keyboard Shortcuts
-          </h3>
+        <div className="flex items-center space-x-2 text-sm font-semibold text-gray-400 uppercase tracking-wider px-1">
+          <Keyboard className="w-4 h-4" />
+          <span>Keyboard Shortcuts</span>
         </div>
-        <div className="space-y-2">
+        <div className="card p-4 space-y-4">
           <div>
-            <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wide">
               Toggle Dark Mode
             </label>
             <input
@@ -107,12 +106,13 @@ export function SettingsPanel() {
               onChange={(e) =>
                 setShortcuts({ ...shortcuts, toggleDarkMode: e.target.value })
               }
-              className="input-base text-sm"
+              className="input-base text-sm font-mono"
               placeholder="Alt+D"
+              spellCheck={false}
             />
           </div>
           <div>
-            <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wide">
               Toggle Styles
             </label>
             <input
@@ -121,12 +121,13 @@ export function SettingsPanel() {
               onChange={(e) =>
                 setShortcuts({ ...shortcuts, toggleStyles: e.target.value })
               }
-              className="input-base text-sm"
+              className="input-base text-sm font-mono"
               placeholder="Alt+S"
+              spellCheck={false}
             />
           </div>
           <div>
-            <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+            <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5 uppercase tracking-wide">
               Open Sidebar
             </label>
             <input
@@ -135,8 +136,9 @@ export function SettingsPanel() {
               onChange={(e) =>
                 setShortcuts({ ...shortcuts, openSidebar: e.target.value })
               }
-              className="input-base text-sm"
+              className="input-base text-sm font-mono"
               placeholder="Alt+T"
+              spellCheck={false}
             />
           </div>
         </div>
@@ -144,32 +146,40 @@ export function SettingsPanel() {
 
       {/* Theme Settings */}
       <div className="space-y-3">
-        <div className="flex items-center space-x-2">
-          <Palette className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Theme Settings
-          </h3>
+        <div className="flex items-center space-x-2 text-sm font-semibold text-gray-400 uppercase tracking-wider px-1">
+          <Palette className="w-4 h-4" />
+          <span>Theme Settings</span>
         </div>
-        <div className="space-y-3">
-          <label className="flex items-center space-x-3">
-            <input
-              type="checkbox"
+        <div className="card p-4 space-y-4">
+          <label
+            className="flex items-center space-x-3 cursor-pointer group"
+            htmlFor="auto-apply">
+            <Checkbox.Root
+              id="auto-apply"
               checked={autoApply}
-              onChange={(e) => setAutoApply(e.target.checked)}
-              className="rounded border-gray-300 text-primary focus:ring-primary"
-            />
-            <span className="text-sm text-gray-700 dark:text-gray-300">
+              onCheckedChange={(checked) => setAutoApply(!!checked)}
+              className="h-5 w-5 rounded-md border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 data-[state=checked]:bg-primary data-[state=checked]:border-primary flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200">
+              <Checkbox.Indicator>
+                <Check className="w-3.5 h-3.5 text-white" />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
               Auto-apply themes when visiting websites
             </span>
           </label>
-          <label className="flex items-center space-x-3">
-            <input
-              type="checkbox"
+          <label
+            className="flex items-center space-x-3 cursor-pointer group"
+            htmlFor="sync-enabled">
+            <Checkbox.Root
+              id="sync-enabled"
               checked={syncEnabled}
-              onChange={(e) => setSyncEnabled(e.target.checked)}
-              className="rounded border-gray-300 text-primary focus:ring-primary"
-            />
-            <span className="text-sm text-gray-700 dark:text-gray-300">
+              onCheckedChange={(checked) => setSyncEnabled(!!checked)}
+              className="h-5 w-5 rounded-md border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 data-[state=checked]:bg-primary data-[state=checked]:border-primary flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200">
+              <Checkbox.Indicator>
+                <Check className="w-3.5 h-3.5 text-white" />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+            <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
               Sync themes across devices
             </span>
           </label>

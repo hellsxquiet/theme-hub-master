@@ -55,6 +55,43 @@ pnpm package
 - **Icons**: Lucide React
 - **Internationalization**: i18next
 
+### Recommended Dependencies
+
+- Linting/Formatting (ESLint, Prettier, TypeScript)
+  ```bash
+  pnpm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-config-prettier prettier prettier-plugin-tailwindcss
+  ```
+  Optional pre-commit hooks:
+  ```bash
+  pnpm add -D husky lint-staged
+  pnpm husky install
+  ```
+
+- Testing (Vitest + Testing Library)
+  ```bash
+  pnpm add -D vitest @testing-library/react @testing-library/user-event jsdom
+  ```
+
+- Tailwind Plugins
+  ```bash
+  pnpm add -D @tailwindcss/forms @tailwindcss/typography
+  ```
+
+- Internationalization (React bindings)
+  ```bash
+  pnpm add react-i18next
+  ```
+
+- Utilities
+  ```bash
+  pnpm add zod clsx dayjs
+  ```
+
+- Browser APIs & State
+  ```bash
+  pnpm add webextension-polyfill @tanstack/react-query
+  ```
+
 ### Project Structure
 ```
 src/

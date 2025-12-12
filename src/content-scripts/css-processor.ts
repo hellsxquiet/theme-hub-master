@@ -16,7 +16,7 @@ export class CSSProcessor {
     }
     
     html[data-theme-hub-dark] [data-theme-hub-preserve] {
-      filter: none !important;
+      filter: invert(1) hue-rotate(180deg) !important;
     }
   `
 

@@ -5,11 +5,10 @@ import logger from "~utils/logger";
 const messageHandler = new MessageHandler();
 const storageService = StorageService.getInstance();
 
-chrome.runtime.onInstalled.addListener(async () => {
+chrome.runtime.onInstalled.addListener(async (details) => {
   logger.info("Theme Hub extension installed");
-  
-  // Set default settings
-  const settings = {
+
+  const defaultSettings = {
     language: 'en' as const,
     keyboardShortcuts: {
       toggleDarkMode: 'Alt+D',
@@ -19,16 +18,21 @@ chrome.runtime.onInstalled.addListener(async () => {
     autoApply: true,
     syncEnabled: false
   };
-  
-  await storageService.saveSettings(settings);
-  
-  // Initialize empty storage
-  await chrome.storage.local.set({
-    themes: {},
-    websiteMappings: {}
-  });
 
-  // Allow opening the side panel when the toolbar icon is clicked
+  const current = await chrome.storage.local.get(['settings', 'themes', 'websiteMappings']);
+
+  if (!current.settings) {
+    await storageService.saveSettings(defaultSettings);
+  }
+
+  if (!current.themes) {
+    await chrome.storage.local.set({ themes: {} });
+  }
+
+  if (!current.websiteMappings) {
+    await chrome.storage.local.set({ websiteMappings: {} });
+  }
+
   if (chrome?.sidePanel?.setPanelBehavior) {
     try {
       await chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
@@ -108,7 +112,7 @@ if (chrome?.action?.onClicked) {
 async function getCurrentWebsite(): Promise<string> {
   const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
   if (tabs[0] && tabs[0].url) {
-    return new URL(tabs[0].url).hostname;
+    return new URL(tabs[0].url).hostname.replace('www.', '');
   }
   return '';
 }

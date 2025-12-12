@@ -13,6 +13,19 @@ export function useTheme(website: string) {
   }, [website])
 
   useEffect(() => {
+    const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }, areaName: string) => {
+      if (areaName === 'local' && changes.themes) {
+        const newThemes = changes.themes.newValue || {}
+        setThemes(newThemes)
+      }
+    }
+    chrome.storage.onChanged.addListener(handleStorageChange)
+    return () => {
+      chrome.storage.onChanged.removeListener(handleStorageChange)
+    }
+  }, [])
+
+  useEffect(() => {
     if (themes[website]) {
       setDarkModeEnabled(themes[website].darkMode)
     } else {

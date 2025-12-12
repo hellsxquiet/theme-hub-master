@@ -1,5 +1,7 @@
-import logger from "~utils/logger"
 import type { ExtensionSettings } from "~types"
+import logger from "~utils/logger"
+import React from "react"
+import { CheckCircle, XCircle } from "lucide-react"
 
 type ErrorContext = {
   source?: string
@@ -11,6 +13,10 @@ function toMessage(error: unknown): string {
   if (typeof error === "string") return error
   if (error && typeof error === "object" && "message" in error) {
     return String((error as any).message || "Unknown error")
+  }
+  if (typeof Event !== "undefined" && error instanceof Event) {
+    const t = (error as Event).type
+    return t ? `Event: ${t}` : "Event"
   }
   try {
     return JSON.stringify(error)
@@ -48,10 +54,14 @@ export async function handleError(error: unknown, context?: ErrorContext) {
   if (typeof window !== "undefined") {
     try {
       const { toast } = await import("sonner")
-      toast.error(message, {
-        description: context?.action || context?.source,
-        dismissible: true
-      })
+      if (!/^Event:?\b/.test(message)) {
+        toast.error("Error", {
+          description: message,
+          dismissible: true,
+          duration: 3500,
+          icon: React.createElement(XCircle, { size: 18 })
+        })
+      }
     } catch {
       // ignore toast load errors
     }
@@ -59,17 +69,6 @@ export async function handleError(error: unknown, context?: ErrorContext) {
 }
 
 export async function handleSuccess(message: string, context?: ErrorContext) {
-  if (typeof window !== "undefined") {
-    try {
-      const { toast } = await import("sonner")
-      toast.success(message, {
-        description: context?.action || context?.source,
-        dismissible: true
-      })
-    } catch {
-      // ignore toast load errors
-    }
-  }
   logger.info(message, context)
 }
 
@@ -80,4 +79,3 @@ export async function clearStoredErrors() {
     logger.warn("Failed to clear stored errors", e)
   }
 }
-
